@@ -1,7 +1,7 @@
 ﻿
 namespace Programavimo_Praktika_2
 {
-    partial class StudentControl
+    partial class StudentMarksUpload
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,31 +29,18 @@ namespace Programavimo_Praktika_2
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(233, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 92);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "My marks";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // StudentControl
+            // StudentMarksUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Name = "StudentControl";
-            this.Size = new System.Drawing.Size(699, 280);
+            this.Name = "StudentMarksUpload";
+            this.Size = new System.Drawing.Size(587, 229);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }

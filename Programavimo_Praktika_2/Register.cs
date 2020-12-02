@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Programavimo_Praktika_2
 {
-    public partial class LecturerControl : UserControl
+    public partial class Register : Form
     {
-        public LecturerControl()
+        public Register()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -52,11 +52,35 @@
     <Compile Include="AdminControl.Designer.cs">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="AssignLectures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignLectures.Designer.cs">
+      <DependentUpon>AssignLectures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Backend\Models\ExTag.cs" />
+    <Compile Include="Backend\Models\Groups.cs" />
+    <Compile Include="Backend\Models\LecturedBy.cs" />
+    <Compile Include="Backend\Models\Lectures.cs" />
+    <Compile Include="Backend\Models\UserInfo.cs" />
+    <Compile Include="Backend\Repositories\SqlHelper.cs" />
     <Compile Include="LecturerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="LecturerControl.Designer.cs">
       <DependentUpon>LecturerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LecturerStudentMarks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LecturerStudentMarks.Designer.cs">
+      <DependentUpon>LecturerStudentMarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LecturerStundents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LecturerStundents.Designer.cs">
+      <DependentUpon>LecturerStundents.cs</DependentUpon>
     </Compile>
     <Compile Include="LogedInScreen.cs">
       <SubType>Form</SubType>
@@ -70,16 +94,72 @@
     <Compile Include="LoginScreen.Designer.cs">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Praktika2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Praktika2DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Praktika2DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Praktika2DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Praktika2DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Praktika2DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Praktika2DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Praktika2DataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterWindow.Designer.cs">
+      <DependentUpon>RegisterWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="StudentControl.Designer.cs">
       <DependentUpon>StudentControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentMarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentMarks.Designer.cs">
+      <DependentUpon>StudentMarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentMarksUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StudentMarksUpload.Designer.cs">
+      <DependentUpon>StudentMarksUpload.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssignLectures.resx">
+      <DependentUpon>AssignLectures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LecturerControl.resx">
+      <DependentUpon>LecturerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LecturerStudentMarks.resx">
+      <DependentUpon>LecturerStudentMarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LecturerStundents.resx">
+      <DependentUpon>LecturerStundents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogedInScreen.resx">
       <DependentUpon>LogedInScreen.cs</DependentUpon>
@@ -96,6 +176,65 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterWindow.resx">
+      <DependentUpon>RegisterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentControl.resx">
+      <DependentUpon>StudentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentMarks.resx">
+      <DependentUpon>StudentMarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentMarksUpload.resx">
+      <DependentUpon>StudentMarksUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Praktika2DataSet.xsc">
+      <DependentUpon>Praktika2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Praktika2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Praktika2DataSet.xss">
+      <DependentUpon>Praktika2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet1.xsc">
+      <DependentUpon>Praktika2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Praktika2DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Praktika2DataSet1.xss">
+      <DependentUpon>Praktika2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet2.xsc">
+      <DependentUpon>Praktika2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Praktika2DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Praktika2DataSet2.xss">
+      <DependentUpon>Praktika2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet3.xsc">
+      <DependentUpon>Praktika2DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Praktika2DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Praktika2DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Praktika2DataSet3.xss">
+      <DependentUpon>Praktika2DataSet3.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,5 +248,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

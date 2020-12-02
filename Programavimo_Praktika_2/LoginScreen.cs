@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Programavimo_Praktika_2.Backend.Repositories;
+
 
 namespace Programavimo_Praktika_2
 {
@@ -15,6 +17,16 @@ namespace Programavimo_Praktika_2
         public LoginScreen()
         {
             InitializeComponent();
+        }
+
+        private void loginbutt_Click(object sender, EventArgs e)
+        {
+            bool login = SqlHelper.LoginwithSql(usernamebox.Text, passbox.Text);
+            if (login == true)
+            {
+                LogedInScreen logins = new LogedInScreen(usernamebox.Text, passbox.Text);
+                logins.Show();
+            }
         }
     }
 }

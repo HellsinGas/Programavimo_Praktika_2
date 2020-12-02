@@ -59,6 +59,7 @@ namespace Programavimo_Praktika_2
             this.loginbutt.TabIndex = 2;
             this.loginbutt.Text = "Login";
             this.loginbutt.UseVisualStyleBackColor = true;
+            this.loginbutt.Click += new System.EventHandler(this.loginbutt_Click);
             // 
             // label1
             // 
@@ -84,11 +85,11 @@ namespace Programavimo_Praktika_2
             this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(208, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(344, 41);
+            this.label3.Size = new System.Drawing.Size(334, 40);
             this.label3.TabIndex = 5;
             this.label3.Text = "VIKO LOGIN SCREEN";
             // 
-            // Form1
+            // LoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,7 +101,7 @@ namespace Programavimo_Praktika_2
             this.Controls.Add(this.loginbutt);
             this.Controls.Add(this.passbox);
             this.Controls.Add(this.usernamebox);
-            this.Name = "Form1";
+            this.Name = "LoginScreen";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
