@@ -55,7 +55,7 @@ namespace Programavimo_Praktika_2
         private void button1_Click(object sender, EventArgs e)
         {
             SqlHelper.InsertDataForSqlLecturedBy((int)LecturerLectureComboBox.SelectedValue, (int)LecturerComboBox.SelectedValue);
-           // MessageBox.Show($"Pirmas box : {LecturerLectureComboBox.SelectedValue} Antras box : {LecturerComboBox.SelectedValue}");
+            MessageBox.Show($"Lecturer : {LecturerLectureComboBox.Text} Assigned to : {LecturerComboBox.Text}");
         }
 
         private void fillBy1ToolStripButton_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Programavimo_Praktika_2
         private void button2_Click(object sender, EventArgs e)
         {
             SqlHelper.InsertDataForSqlGroupLectures((int)combolecturesforGROUPS.SelectedValue, (int)groupcombobox.SelectedValue);
-         //   MessageBox.Show($"Pirmas box : {combolecturesforGROUPS.SelectedValue} Antras box : {groupcombobox.SelectedValue}");
+           MessageBox.Show($"Lecture: {combolecturesforGROUPS.Text} Assigned to : {groupcombobox.Text}");
         }
     }
 }

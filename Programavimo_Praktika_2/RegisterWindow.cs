@@ -24,6 +24,7 @@ namespace Programavimo_Praktika_2
         {
             SqlHelper sql = new SqlHelper();
             SqlHelper.InsertDataForSql(namebox.Text, surnamebox.Text, namebox.Text, surnamebox.Text, emailbox.Text, rolebox.Text);
+            MessageBox.Show($"User:{namebox.Text} has been created");
         }
     }
 }

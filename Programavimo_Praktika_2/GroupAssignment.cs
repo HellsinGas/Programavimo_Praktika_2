@@ -48,7 +48,7 @@ namespace Programavimo_Praktika_2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"nusiunciau {comboBox1.SelectedValue} ir  {comboBox2.SelectedValue}");
+            MessageBox.Show($"Group: {comboBox1.Text} Assigned to: {comboBox2.Text}");
             SqlHelper.InsertDataForSqlAssignGroups((int)comboBox1.SelectedValue, (int)comboBox2.SelectedValue);
         }
 

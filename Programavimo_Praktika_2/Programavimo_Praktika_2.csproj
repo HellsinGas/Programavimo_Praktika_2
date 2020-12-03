@@ -79,18 +79,6 @@
     <Compile Include="LecturerControl.Designer.cs">
       <DependentUpon>LecturerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="LecturerStudentMarks.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LecturerStudentMarks.Designer.cs">
-      <DependentUpon>LecturerStudentMarks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LecturerStundents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LecturerStundents.Designer.cs">
-      <DependentUpon>LecturerStundents.cs</DependentUpon>
-    </Compile>
     <Compile Include="LogedInScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,12 +118,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegisterWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,12 +130,6 @@
     <Compile Include="StudentControl.Designer.cs">
       <DependentUpon>StudentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentMarks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StudentMarks.Designer.cs">
-      <DependentUpon>StudentMarks.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,12 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LecturerControl.resx">
       <DependentUpon>LecturerControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LecturerStudentMarks.resx">
-      <DependentUpon>LecturerStudentMarks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LecturerStundents.resx">
-      <DependentUpon>LecturerStundents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogedInScreen.resx">
       <DependentUpon>LogedInScreen.cs</DependentUpon>
@@ -187,17 +157,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegisterWindow.resx">
       <DependentUpon>RegisterWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentControl.resx">
       <DependentUpon>StudentControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StudentMarks.resx">
-      <DependentUpon>StudentMarks.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Praktika2DataSet.xsc">
       <DependentUpon>Praktika2DataSet.xsd</DependentUpon>

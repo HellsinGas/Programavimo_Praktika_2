@@ -17,6 +17,7 @@ namespace Programavimo_Praktika_2
         public LoginScreen()
         {
             InitializeComponent();
+            passbox.PasswordChar ='*';
         }
 
         private void loginbutt_Click(object sender, EventArgs e)

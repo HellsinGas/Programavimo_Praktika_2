@@ -139,7 +139,7 @@ namespace Programavimo_Praktika_2
 
         private void Markbutton_Click(object sender, EventArgs e)
         {
-            MarksLayoutPanel4.Controls.Clear();
+           // MarksLayoutPanel4.Controls.Clear();
             Button button = (Button)sender;
             Marks mark = (Marks)button.Tag;
             string content = Interaction.InputBox("Mark", $" Current mark :{mark.Mark}", "Input new mark here", 500, 300);
