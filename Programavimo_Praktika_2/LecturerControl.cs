@@ -94,7 +94,7 @@ namespace Programavimo_Praktika_2
               //  groupbuton.Click += Groupbuton_Click;
 
             }
-            MessageBox.Show($"pamoka={lectures.LectureName} grupe= {groups.GroupName} ");
+          //  MessageBox.Show($"pamoka={lectures.LectureName} grupe= {groups.GroupName} ");
 
             //throw new NotImplementedException();
         }
@@ -114,6 +114,7 @@ namespace Programavimo_Praktika_2
           //  MarksLayoutPanel4.SetFlowBreak(addmark, true);
             Label separation = new Label();
             separation.Text = "Student Marks : Click to change it";
+            MarksLayoutPanel4.Controls.Add(separation);
             MarksLayoutPanel4.SetFlowBreak(separation, true);            
             addmark.Click += Addmark_Click;
             List<Marks> marks = new List<Marks>();
