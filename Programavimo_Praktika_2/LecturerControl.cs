@@ -41,6 +41,8 @@ namespace Programavimo_Praktika_2
         private void Lecturebutton_Click(object sender, EventArgs e)
         {
             GroupsLayoutPanel2.Controls.Clear();
+            MarksLayoutPanel4.Controls.Clear();
+            StudentsLayoutPanel3.Controls.Clear();
             Button button = (Button)sender;
             SqlHelper sql = new SqlHelper();
             Lectures lectures = (Lectures)button.Tag;
@@ -68,6 +70,7 @@ namespace Programavimo_Praktika_2
         private void Groupbuton_Click(object sender, EventArgs e)
         {
             StudentsLayoutPanel3.Controls.Clear();
+            MarksLayoutPanel4.Controls.Clear();
             Button button = (Button)sender;
             ExTag ex = (ExTag)button.Tag;
             Lectures lectures = (Lectures)(ex.Get("Lecture"));
@@ -136,6 +139,7 @@ namespace Programavimo_Praktika_2
 
         private void Markbutton_Click(object sender, EventArgs e)
         {
+            MarksLayoutPanel4.Controls.Clear();
             Button button = (Button)sender;
             Marks mark = (Marks)button.Tag;
             string content = Interaction.InputBox("Mark", $" Current mark :{mark.Mark}", "Input new mark here", 500, 300);
@@ -151,6 +155,7 @@ namespace Programavimo_Praktika_2
 
         private void Addmark_Click(object sender, EventArgs e)
         {
+           // MarksLayoutPanel4.Controls.Clear();
             Button button = (Button)sender;
             ExTag ex = (ExTag)button.Tag;
             Lectures lectures = (Lectures)(ex.Get("Lecture"));

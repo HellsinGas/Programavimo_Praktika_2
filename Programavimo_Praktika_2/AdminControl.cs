@@ -70,6 +70,7 @@ namespace Programavimo_Praktika_2
             string grp = kk.Text;
            // string grp = (TextBox)(add.Tag).Tag.ToString();
             SqlHelper.InsertDataForSqlGroup(grp);
+            MessageBox.Show($"Group : {kk.Text} has been added");
            // throw new NotImplementedException();
         }
 
@@ -159,7 +160,7 @@ namespace Programavimo_Praktika_2
             TextBox name = (TextBox)(exTag.Get("Name"));
             TextBox desc = (TextBox)(exTag.Get("Desc"));
             SqlHelper.InsertDataForSqlLecture(name.Text, desc.Text);
-            //MessageBox.Show($"bbz: {name.Text} bbd: {desc.Text}");
+            MessageBox.Show($"Lecture: {name.Text} has been added");
         }
 
         private void Lecturebutton_Click(object sender, EventArgs e)
