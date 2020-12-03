@@ -8,9 +8,13 @@ namespace Programavimo_Praktika_2.Backend.Models
 {
     public class Groups
     {
-        public int Id { get; private set; }
-        public string GroupName { get; private set; }
+        public int Id { get; set; }
+        public string GroupName { get; set; }
 
+        public Groups()
+        {
+
+        }
         public Groups (int id , string groupname)
         {
             Id = id;

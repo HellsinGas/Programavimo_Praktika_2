@@ -237,5 +237,11 @@ namespace Programavimo_Praktika_2
             AssignLectures assign = new AssignLectures();
             assign.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GroupAssignment groupAssignment = new GroupAssignment();
+            groupAssignment.Show();
+        }
     }
 }

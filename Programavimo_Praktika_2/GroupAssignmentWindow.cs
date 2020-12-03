@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Programavimo_Praktika_2
 {
-    public partial class StudentMarksUpload : UserControl
+    public partial class GroupAssignmentWindow : Form
     {
-        public StudentMarksUpload()
+        public GroupAssignmentWindow()
         {
             InitializeComponent();
         }

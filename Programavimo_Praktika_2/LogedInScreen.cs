@@ -36,6 +36,19 @@ namespace Programavimo_Praktika_2
                 AdminControl adminas = new AdminControl();
                 flowLayoutPanel1.Controls.Add(adminas);
             }
+            if (currentuser.Rows[0][7].ToString() == "lecturer")
+            {
+                // lectdminas = new AdminControl();
+                LecturerControl lecturer = new LecturerControl();
+                flowLayoutPanel1.Controls.Add(lecturer);
+            }
+            if (currentuser.Rows[0][7].ToString() == "student")
+            {
+                // lectdminas = new AdminControl();
+                StudentControl student = new StudentControl();
+                flowLayoutPanel1.Controls.Add(student);
+            }
+            
 
         }
     }

@@ -29,23 +29,32 @@ namespace Programavimo_Praktika_2
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.LecturesflowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.MarksflowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // button1
+            // LecturesflowLayoutPanel1
             // 
-            this.button1.Location = new System.Drawing.Point(233, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 92);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "My marks";
-            this.button1.UseVisualStyleBackColor = true;
+            this.LecturesflowLayoutPanel1.AutoScroll = true;
+            this.LecturesflowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.LecturesflowLayoutPanel1.Name = "LecturesflowLayoutPanel1";
+            this.LecturesflowLayoutPanel1.Size = new System.Drawing.Size(194, 276);
+            this.LecturesflowLayoutPanel1.TabIndex = 0;
+            // 
+            // MarksflowLayoutPanel2
+            // 
+            this.MarksflowLayoutPanel2.AutoScroll = true;
+            this.MarksflowLayoutPanel2.Location = new System.Drawing.Point(204, 4);
+            this.MarksflowLayoutPanel2.Name = "MarksflowLayoutPanel2";
+            this.MarksflowLayoutPanel2.Size = new System.Drawing.Size(492, 273);
+            this.MarksflowLayoutPanel2.TabIndex = 1;
             // 
             // StudentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.MarksflowLayoutPanel2);
+            this.Controls.Add(this.LecturesflowLayoutPanel1);
             this.Name = "StudentControl";
             this.Size = new System.Drawing.Size(699, 280);
             this.ResumeLayout(false);
@@ -54,6 +63,7 @@ namespace Programavimo_Praktika_2
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel LecturesflowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel MarksflowLayoutPanel2;
     }
 }

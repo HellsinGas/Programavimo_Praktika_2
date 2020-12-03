@@ -95,12 +95,13 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                 return false;
             }
         }
-       /* public static bool InsertDataForSqlWishlist(int UserId, int itemId)
+       
+        public static bool InsertDataForSqlGroup(string GroupName)
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
             string query = string.Empty;
-            query += "INSERT INTO wishlist(UserID,itemID) ";
-            query += "VALUES ('" + UserId + "','" + itemId + "')";
+            query += "INSERT INTO Groups(GroupName) ";
+            query += "VALUES ('" + GroupName + "')";
             //query += ", '0')";
             try
             {
@@ -119,13 +120,13 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                 MessageBox.Show("Toks vartotojas jau egzistuoja" + e);
                 return false;
             }
-        }*/
-        public static bool InsertDataForSqlGroup(string GroupName)
+        }
+        public static bool InsertDataForSqlMarks(int lectureid ,int userid , int mark)
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
             string query = string.Empty;
-            query += "INSERT INTO Groups(GroupName) ";
-            query += "VALUES ('" + GroupName + "')";
+            query += "INSERT INTO MarksTable(LectureID,UserID,Mark) ";
+            query += "VALUES ('" + lectureid + "','" + userid + "','" + mark + "')";
             //query += ", '0')";
             try
             {
@@ -202,6 +203,37 @@ namespace Programavimo_Praktika_2.Backend.Repositories
             }
 
         }
+        public static bool InsertDataFromSql(int id, ref DataTable dat)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            string SqlCommand = string.Empty;
+            SqlCommand += "SELECT * FROM UserTable ";
+            SqlCommand += "Where ID = '" + id + "'";
+            SqlDataAdapter da = new SqlDataAdapter(SqlCommand, con);
+            try
+            {
+                con.Open();
+                //DataTable dt = new DataTable();
+                da.Fill(dat);
+                con.Close();
+                if (dat.Rows.Count == 1)
+                {
+
+                    return true;
+                }
+                else
+                {
+                    con.Close();
+                    return false;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                return false;
+            }
+
+        }
         public static bool InsertDataForSqlLecturedBy(int lectureid, int userid)
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
@@ -226,12 +258,62 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                 return false;
             }
         }
-        public static bool InsertDataForSqlGroupLectures(int lectureid, int groupid)
+        public static bool InsertDataForSqlGroupLectures(int lectureid ,int groupid)
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
             string query = string.Empty;
             query += "INSERT INTO GroupLectures(LectureID,GroupID) ";
             query += "VALUES ('" + lectureid + "','" + groupid + "')";
+            try
+            {
+                con.Open();
+                //SqlDataAdapter da = new SqlDataAdapter(query, con);
+                SqlCommand da = new SqlCommand(query, con);
+                da.ExecuteScalar();
+
+                con.Close();
+                // MessageBox.Show("!!!!!!!!!");
+                return true;
+            }
+            catch (SqlException e)
+            {
+                con.Close();
+                MessageBox.Show("Toks vartotojas jau egzistuoja" + e);
+                return false;
+            }
+        }
+        public static bool InsertDataForSqlAssignGroups(int groupid, int userid)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            string query = string.Empty;
+            query += "UPDATE UserTable";
+            query += " SET groupid ='"+ groupid +"'";
+            query += "WHERE id = '" + userid + "'";
+            try
+            {
+                con.Open();
+                //SqlDataAdapter da = new SqlDataAdapter(query, con);
+                SqlCommand da = new SqlCommand(query, con);
+                da.ExecuteScalar();
+
+                con.Close();
+                // MessageBox.Show("!!!!!!!!!");
+                return true;
+            }
+            catch (SqlException e)
+            {
+                con.Close();
+                MessageBox.Show("Toks vartotojas jau egzistuoja" + e);
+                return false;
+            }
+        }
+        public static bool InsertDataForSqlMarkChange(int mark, int id)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            string query = string.Empty;
+            query += "UPDATE MarksTable";
+            query += " SET Mark ='" + mark + "'";
+            query += "WHERE id = '" + id + "'";
             try
             {
                 con.Open();
@@ -408,56 +490,7 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                 return;
             }
         }
-        /*public static bool InsertDataFromSql(string Username, ref DataTable dat)
-        {
-            SqlConnection con = new SqlConnection(sqlconnectionstring);
-            string SqlCommand = string.Empty;
-            SqlCommand += "SELECT * FROM Useris ";
-            SqlCommand += "Where Username = '" + Username + "'";
-            SqlDataAdapter da = new SqlDataAdapter(SqlCommand, con);
-            try
-            {
-                con.Open();
-                //DataTable dt = new DataTable();
-                da.Fill(dat);
-                con.Close();
-                if (dat.Rows.Count == 1)
-                {
-
-                    return true;
-                }
-                else
-                {
-                    con.Close();
-                    return false;
-                }
-
-            }
-            catch (SqlException e)
-            {
-                return false;
-            }
-
-        }*/
-
-        /*public static void FillTable(ref DataTable dat)
-        {
-            SqlConnection con = new SqlConnection(sqlconnectionstring);
-            string query = string.Empty;
-            query += "SELECT * FROM UserTable Where Permissions = 'User'";
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
-            try
-            {
-                con.Open();
-                da.Fill(dat);
-                con.Close();
-                return;
-            }
-            catch (SqlException e)
-            {
-                return;
-            }
-        }*/
+      
 
         public static void DeleteGroup(string ID, string itemId)
         {
@@ -520,75 +553,7 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                 return;
             }
         }
-        /* public List<Item> GetItems()
-         {
-             List<Item> itemsList = new List<Item>();
-             try
-             {
-                 string sql = "select id, title, price, description, image from items";
-                 SqlCommand cmd = new SqlCommand(sql, conn);
-
-                 conn.Open();
-                 SqlDataReader reader = cmd.ExecuteReader();
-
-                 while (reader.Read())
-                 {
-                     int id = int.Parse(reader["id"].ToString());
-                     string title = reader["title"].ToString();
-                     double price = double.Parse(reader["price"].ToString());
-                     string description = reader["description"].ToString();
-                     string image = reader["image"].ToString();
-                     itemsList.Add(new Item(id, title, description, image, price));
-                 }
-
-                 conn.Close();
-             }
-             catch (Exception exc)
-             {
-                 Debug.WriteLine(exc.Message);
-             }
-
-             return itemsList;
-         }*/
-        /*   public Item GetItemsWishlist(int ID)
-           {
-              //Item itemsList= new Item();
-               try
-               {
-                   string sql = "select ID, title, price, description, image from items where ID=@ID";
-                   SqlCommand cmd = new SqlCommand(sql, conn);
-                   cmd.Parameters.AddWithValue("@ID", ID);
-
-                   conn.Open();
-                   SqlDataReader reader = cmd.ExecuteReader();
-
-                   while (reader.Read())
-                   {
-                       int id = int.Parse(reader["id"].ToString());
-                       string title = reader["title"].ToString();
-                       double price = double.Parse(reader["price"].ToString());
-                       string description = reader["description"].ToString();
-                       string image = reader["image"].ToString();
-                       Item itemList= new Item(id, title, description, image, (double)price);
-                   //return itemsList;
-                   //  itemList.add
-                    }
-
-                   conn.Close();
-                   return itemsList;
-               }
-               catch (SqlException e)
-               {
-                   MessageBox.Show("bybys gavos" +e);
-                  // Debug.WriteLine(exc.Message);
-                  // throw;
-                   //return ;
-               }
-
-               // return NULL;
-               return itemsList;
-           }*/
-
+        
         public List<Groups> GetGroups()
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
@@ -616,6 +581,92 @@ namespace Programavimo_Praktika_2.Backend.Repositories
             }         
 
             return groupsList;
+        }
+        public List<GroupLectures> GetGroupLecturesLecturer(int lectureid)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            List<GroupLectures> groupsList = new List<GroupLectures>();
+            try
+            {
+                string sql = "select ID, LectureID, GroupID from GroupLectures WHERE LectureID = '" + lectureid + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = int.Parse(reader["ID"].ToString());
+                    int title = int.Parse(reader["LectureID"].ToString());
+                    int groupid = int.Parse(reader["GroupID"].ToString());
+                    groupsList.Add(new GroupLectures(id, title,groupid));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
+
+            return groupsList;
+        }
+        public List<GroupLectures> GetGroupLecturesStudent(int groupId)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            List<GroupLectures> groupsList = new List<GroupLectures>();
+            try
+            {
+                string sql = "select ID, LectureID, GroupID from GroupLectures WHERE GroupID = '" + groupId + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = int.Parse(reader["ID"].ToString());
+                    int title = int.Parse(reader["LectureID"].ToString());
+                    int groupid = int.Parse(reader["GroupID"].ToString());
+                    groupsList.Add(new GroupLectures(id, title, groupid));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
+
+            return groupsList;
+        }
+        public Groups GetGroupsLecturer(int id)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            Groups groupslect = new Groups();
+            try
+            {
+                string sql = "select ID, GroupName from Groups WHERE ID = '" + id + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    groupslect.Id= int.Parse(reader["ID"].ToString());
+                    groupslect.GroupName = reader["GroupName"].ToString();
+                   // groupsList.Add(new Groups(id, title));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
+
+            return groupslect;
         }
         public List<LecturedBy> GetLecturedBy()
         {
@@ -647,6 +698,36 @@ namespace Programavimo_Praktika_2.Backend.Repositories
 
             return lecturedbyList;
         }
+        public List<LecturedBy> GetLecturedByLecturer(int lecturerid)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            List<LecturedBy> lecturedbyList = new List<LecturedBy>();
+            try
+            {
+                string sql = "select ID, LectureID, UserID from LecturedBy WHERE UserID ='" + lecturerid + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = int.Parse(reader["ID"].ToString());
+                    int lectureid = int.Parse(reader["LectureID"].ToString());
+                    int userid = int.Parse(reader["UserID"].ToString());
+
+                    lecturedbyList.Add(new LecturedBy(id, lectureid, userid));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:+++++++++++++++++++++" + exc);
+            }
+
+            return lecturedbyList;
+        }
         public List<Lectures> GetLectures()
         {
             SqlConnection con = new SqlConnection(sqlconnectionstring);
@@ -665,6 +746,66 @@ namespace Programavimo_Praktika_2.Backend.Repositories
                     string name = reader["Name"].ToString();
                     string description = reader["Description"].ToString();
                     lecturesList.Add(new Lectures(id, name, description));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
+
+            return lecturesList;
+        }
+        public List<Marks> GetMarksLecturer(int lectureId, int userId)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            List<Marks> marksList = new List<Marks>();
+            try
+            {
+                string sql = "select ID, LectureID, UserID, Mark from MarksTable WHERE LectureID = '";
+                sql += +lectureId + "' AND UserID = '" + userId + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = int.Parse(reader["ID"].ToString());
+                    int lectureid = int.Parse(reader["LectureID"].ToString());
+                    int userid = int.Parse(reader["UserID"].ToString());
+                    int mark = int.Parse(reader["Mark"].ToString());
+                    marksList.Add(new Marks(id, lectureid,userid,mark));
+                }
+
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
+
+            return marksList;
+        }
+        public Lectures GetLecturesLecturer(int id)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            Lectures lecturesList = new Lectures();
+            try
+            {
+                string sql = "select ID, Name, Description from LectureTable WHERE  ID ='" + id + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lecturesList.Id = int.Parse(reader["ID"].ToString());
+                    lecturesList.LectureName = reader["Name"].ToString();
+                    lecturesList.Description = reader["Description"].ToString();
+                    //lecturesList.Add(new Lectures(id, name, description));
                 }
 
                 con.Close();
@@ -711,108 +852,42 @@ namespace Programavimo_Praktika_2.Backend.Repositories
 
             return userList;
         }
-
-        /* private List<Item> GetItems(int categoryId)
-         {
-             List<Item> itemsList = new List<Item>();
-             try
-             {
-                 string sql = "select id, title, price, description, image from items " +
-                         "where categoryId=@categoryId";
-                 SqlCommand cmd = new SqlCommand(sql, conn);
-                 cmd.Parameters.AddWithValue("@categoryId", categoryId);
-
-                 conn.Open();
-                 SqlDataReader reader = cmd.ExecuteReader();
-
-                 while (reader.Read())
-                 {
-                     int id = int.Parse(reader["id"].ToString());
-                     string title = reader["title"].ToString();
-                     double price = double.Parse(reader["price"].ToString());
-                     string description = reader["description"].ToString();
-                     string image = reader["image"].ToString();
-                     itemsList.Add(new Item(id, title, description, image, price));
-                 }
-
-                 conn.Close();
-             }
-             catch (Exception exc)
-             {
-                 Debug.WriteLine(exc.Message);
-             }
-
-             return itemsList;
-         }*/
-        /*    public List<Commentas> GetComments(int ItemID)
+        public List<UserInfo> GetUserInfoLecturer(int groupId)
+        {
+            SqlConnection con = new SqlConnection(sqlconnectionstring);
+            List<UserInfo> userList = new List<UserInfo>();
+            try
             {
-                List<Commentas> comentaras = new List<Commentas>();
-                try
-                {
-                    string sql = "select DISTINCT ID, UserID, itemID, comment, Timestamp from comment " + "where ItemID=@ItemID";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                string sql = "select id, name, surname, username," +
+                    " password, groupid, email, role from UserTable WHERE groupid = '" + groupId + "'";
+                SqlCommand cmd = new SqlCommand(sql, con);
 
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    //int i = 0;
-                    while (reader.Read())
-                    {
-                        // int i = 0;
-                        int id = int.Parse(reader["id"].ToString());
-                        int userId = int.Parse(reader["UserID"].ToString());
-                        int ItemId = int.Parse(reader["ItemID"].ToString());
-                        string commentas = reader["comment"].ToString();
-                        string timestamp = reader["timestamp"].ToString();
-                        comentaras.Add(new Commentas(id, userId, ItemId, commentas, timestamp));
-                        //  i++;
-                    }
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                    conn.Close();
-                }
-                catch (Exception exc)
+                while (reader.Read())
                 {
-                    Debug.WriteLine(exc.Message);
+                    int id = int.Parse(reader["id"].ToString());
+                    string name = reader["name"].ToString();
+                    string surname = reader["surname"].ToString();
+                    string username = reader["username"].ToString();
+                    string password = reader["password"].ToString();
+                    string groupid = reader["groupid"].ToString();
+                    string email = reader["email"].ToString();
+                    string role = reader["role"].ToString();
+                    userList.Add(new UserInfo(id, name, surname, username, password, groupid, email, role));
                 }
 
-                //foreach (Wishlist b in wishlistas)
-                // b.SetWishItems(GetItemsWishlist(b.ItemId));
+                con.Close();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Sql Error:" + exc);
+            }
 
-                return comentaras;
-            }*/
-        /* public List<Wishlist> GetWishlist(int UserID)
-         {
-             List<Wishlist> wishlistas = new List<Wishlist>();
-             try
-             {
-                 string sql = "select DISTINCT id, UserID, itemID from wishlist " + "where UserID=@UserID";
-                 SqlCommand cmd = new SqlCommand(sql, conn);
-                 cmd.Parameters.AddWithValue("@UserID", UserID);
+            return userList;
+        }
 
-                 conn.Open();
-                 SqlDataReader reader = cmd.ExecuteReader();
-                 //int i = 0;
-                 while (reader.Read())
-                 {
-                     // int i = 0;
-                     int id = int.Parse(reader["id"].ToString());
-                     int userId = int.Parse(reader["UserID"].ToString());
-                     int ItemId = int.Parse(reader["ItemID"].ToString());
-                     wishlistas.Add(new Wishlist(id, userId, ItemId));
-                     //  i++;
-                 }
-
-                 conn.Close();
-             }
-             catch (Exception exc)
-             {
-                 Debug.WriteLine(exc.Message);
-             }
-
-             //foreach (Wishlist b in wishlistas)
-             // b.SetWishItems(GetItemsWishlist(b.ItemId));
-
-             return wishlistas;
-         }*/
+        
     }
 }

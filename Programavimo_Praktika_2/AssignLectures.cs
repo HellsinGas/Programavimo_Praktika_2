@@ -29,7 +29,7 @@ namespace Programavimo_Praktika_2
                 flowLayoutPanel1.Controls.Add(lecture);
                 flowLayoutPanel1.Controls.Add(alecturer);
                 flowLayoutPanel1.SetFlowBreak(alecturer, true);
-                MessageBox.Show($"Pamokos ID {c.LectureId} , Destytojo ID {c.UserId}");
+              //  MessageBox.Show($"Pamokos ID {c.LectureId} , Destytojo ID {c.UserId}");
             }
             //flowLayoutPanel1.
            // Label lecture = new Label();
@@ -55,7 +55,7 @@ namespace Programavimo_Praktika_2
         private void button1_Click(object sender, EventArgs e)
         {
             SqlHelper.InsertDataForSqlLecturedBy((int)LecturerLectureComboBox.SelectedValue, (int)LecturerComboBox.SelectedValue);
-            MessageBox.Show($"Pirmas box : {LecturerLectureComboBox.SelectedValue} Antras box : {LecturerComboBox.SelectedValue}");
+           // MessageBox.Show($"Pirmas box : {LecturerLectureComboBox.SelectedValue} Antras box : {LecturerComboBox.SelectedValue}");
         }
 
         private void fillBy1ToolStripButton_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Programavimo_Praktika_2
         private void button2_Click(object sender, EventArgs e)
         {
             SqlHelper.InsertDataForSqlGroupLectures((int)combolecturesforGROUPS.SelectedValue, (int)groupcombobox.SelectedValue);
-            MessageBox.Show($"Pirmas box : {LecturerLectureComboBox.SelectedValue} Antras box : {LecturerComboBox.SelectedValue}");
+         //   MessageBox.Show($"Pirmas box : {combolecturesforGROUPS.SelectedValue} Antras box : {groupcombobox.SelectedValue}");
         }
     }
 }

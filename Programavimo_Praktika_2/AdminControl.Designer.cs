@@ -76,6 +76,7 @@ namespace Programavimo_Praktika_2
             this.button3.TabIndex = 5;
             this.button3.Text = "Assign Groups";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -87,6 +88,7 @@ namespace Programavimo_Praktika_2
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(584, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(284, 280);
